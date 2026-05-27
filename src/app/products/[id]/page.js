@@ -10,6 +10,7 @@ export default function ProductDetailsPage({ params }) {
   const [loading, setLoading] = useState(true);
   const [addingToCart, setAddingToCart] = useState(false);
   const [addingToWishlist, setAddingToWishlist] = useState(false);
+  const [activeImageIndex, setActiveImageIndex] = useState(0);
   const { id } = use(params);
 
   useEffect(() => {
@@ -96,8 +97,8 @@ export default function ProductDetailsPage({ params }) {
           {/* Images Section */}
           <div className="space-y-4">
             <div className="w-full aspect-square relative bg-white dark:bg-zinc-900 rounded-3xl overflow-hidden border border-zinc-200 dark:border-zinc-800 shadow-sm">
-              {product.images && product.images[0] ? (
-                <img src={product.images[0]} alt={product.name} className="object-cover w-full h-full" />
+              {product.images && product.images[activeImageIndex] ? (
+                <img src={product.images[activeImageIndex]} alt={product.name} className="object-cover w-full h-full transition-opacity duration-300" />
               ) : (
                 <div className="w-full h-full flex items-center justify-center text-zinc-400">
                   No Image Available
@@ -105,10 +106,14 @@ export default function ProductDetailsPage({ params }) {
               )}
             </div>
             {product.images && product.images.length > 1 && (
-              <div className="grid grid-cols-4 gap-4">
-                {product.images.slice(1).map((img, i) => (
-                  <div key={i} className="aspect-square bg-white dark:bg-zinc-900 rounded-xl overflow-hidden border border-zinc-200 dark:border-zinc-800 cursor-pointer hover:border-blue-500 transition-colors">
-                    <img src={img} alt={`${product.name} ${i+2}`} className="object-cover w-full h-full" />
+              <div className="grid grid-cols-4 sm:grid-cols-5 gap-3">
+                {product.images.map((img, i) => (
+                  <div 
+                    key={i} 
+                    onClick={() => setActiveImageIndex(i)}
+                    className={`aspect-square bg-white dark:bg-zinc-900 rounded-xl overflow-hidden border cursor-pointer transition-all ${activeImageIndex === i ? 'border-blue-500 ring-2 ring-blue-500/50 scale-[0.98]' : 'border-zinc-200 dark:border-zinc-800 hover:border-zinc-400 dark:hover:border-zinc-600 hover:scale-[1.02]'}`}
+                  >
+                    <img src={img} alt={`${product.name} thumbnail ${i+1}`} className="object-cover w-full h-full" />
                   </div>
                 ))}
               </div>

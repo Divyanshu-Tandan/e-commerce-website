@@ -187,7 +187,7 @@ const seedDatabase = async () => {
     console.log("Clearing existing data...");
     await User.deleteMany({});
     await Product.deleteMany({});
-    
+
     // Create Admin
     console.log("Creating admin user...");
     const adminPassword = await bcrypt.hash("admin123", 10);
@@ -204,7 +204,7 @@ const seedDatabase = async () => {
     console.log("Creating normal users...");
     const normalUsers = [];
     const userPassword = await bcrypt.hash("password123", 10);
-    
+
     for (let i = 1; i <= 5; i++) {
       normalUsers.push({
         username: `user${i}`,
@@ -214,7 +214,7 @@ const seedDatabase = async () => {
         wishlist: []
       });
     }
-    
+
     await User.insertMany(normalUsers);
     console.log(`Created 5 normal users (user1 to user5) | Password: password123`);
 
