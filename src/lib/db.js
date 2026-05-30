@@ -6,7 +6,7 @@ const connectDB = async () => {
         // console.log("DB Connected", mongoose.connection.host)
     } catch(error) {
         console.log(error.message)
-        process.exit(1)
+        // Do not use process.exit(1) in Next.js, it will kill the entire dev server!
     }
 }
 

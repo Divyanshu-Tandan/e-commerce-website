@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- White background inside border -->
+  <rect
+    x="40"
+    y="40"
+    width="432"
+    height="432"
+    rx="80"
+    fill="white"
+    stroke="black"
+    stroke-width="16"
+  />
+
+  <!-- Letter S -->
+  <text
+    x="256"
+    y="340"
+    text-anchor="middle"
+    font-family="Inter, Arial, Helvetica, sans-serif"
+    font-size="250"
+    font-weight="900"
+    fill="black">
+    S
+  </text>
+</svg>

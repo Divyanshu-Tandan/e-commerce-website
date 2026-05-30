@@ -77,6 +77,15 @@ export async function POST(request) {
       deliveryStatus: "processing",
     });
 
+    // Development Bypass: If using dummy Stripe keys, simulate a successful checkout
+    if (process.env.STRIPE_SECRET_KEY === "sk_test_your_stripe_secret_key_here") {
+      order.stripeSessionId = "mock_session_" + Date.now();
+      await order.save();
+      
+      const successUrl = `${process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"}/order-success?session_id=${order.stripeSessionId}&order_id=${order._id}`;
+      return NextResponse.json({ url: successUrl, orderId: order._id }, { status: 200 });
+    }
+
     // Create Stripe Checkout Session
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
