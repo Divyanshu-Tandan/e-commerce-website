@@ -52,12 +52,16 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 To run this project locally, you will need to add the following environment variables to a `.env.local` file:
 
 ```env
-MONGODB_URI=your_mongodb_connection_string
-JWT_SECRET=your_jwt_secret
+MONGODB_URI=YOUR_MONGODB_CONNECTION_STRING
+ACCESS_TOKEN_SECRET=YOUR_ACCESS_TOKEN_SECRET
+REFRESH_TOKEN_SECRET=YOUR_REFRESH_TOKEN_SECRET
+
+ACCESS_TOKEN_EXPIRY=YOUR_ACCESS_TOKEN_EXPIRY
+REFRESH_TOKEN_EXPIRY=YOUR_REFRESH_TOKEN_EXPIRY
 
 # Cloudinary
-CLOUDINARY_URL=your_cloudinary_url
+CLOUDINARY_URL=YOUR_CLOUDINARY_URL
 
 # Stripe (In Development)
-STRIPE_SECRET_KEY=your_stripe_secret_key
+STRIPE_SECRET_KEY=YOUR_STRIPE_SECRET_KEY
 ```
