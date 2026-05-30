@@ -43,3 +43,6 @@ next-env.d.ts
 
 # folders
 /seed
+
+# files
+implementation_plan.md
