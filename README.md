@@ -1,8 +1,39 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Fullstack E-Commerce Project
 
-## Getting Started
+This is a modern web application built with [Next.js](https://nextjs.org/) using the App Router.
 
-First, run the development server:
+## 🚀 Features
+
+Currently, the application includes the following features:
+
+- **User Authentication**: Secure user registration, login, and profile management using JWT (JSON Web Tokens) and bcrypt for password hashing.
+- **Product Catalog**: Browse the available products on the platform.
+- **Product Details**: View dedicated product pages with detailed descriptions and images.
+- **Image Upload & Management**: Integrated with Cloudinary for seamless handling of user/product image uploads.
+- **Modern UI**: Styled with Tailwind CSS for a fully responsive and beautiful user interface.
+- **Database**: MongoDB (via Mongoose) to handle user data, products, and sessions.
+
+> ⚠️ **Note regarding Payment Integration**
+> The Stripe payment integration is currently **in development**. At this stage, users can freely browse the product catalog and view product details, but the checkout and purchasing functionalities are temporarily disabled.
+
+## 💻 Tech Stack
+
+- **Framework**: Next.js 16 (App Router)
+- **Styling**: Tailwind CSS 4
+- **Database**: MongoDB & Mongoose
+- **Authentication**: Custom JWT based auth
+- **Media Storage**: Cloudinary
+- **Payments**: Stripe (In Progress)
+
+## 🛠️ Getting Started
+
+First, install the dependencies:
+
+```bash
+npm install
+```
+
+Then, run the development server:
 
 ```bash
 npm run dev
@@ -16,21 +47,17 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## ⚙️ Environment Variables
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+To run this project locally, you will need to add the following environment variables to a `.env.local` file:
 
-## Learn More
+```env
+MONGODB_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret
 
-To learn more about Next.js, take a look at the following resources:
+# Cloudinary
+CLOUDINARY_URL=your_cloudinary_url
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+# Stripe (In Development)
+STRIPE_SECRET_KEY=your_stripe_secret_key
+```
