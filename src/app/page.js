@@ -43,8 +43,6 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-zinc-50 dark:bg-black text-zinc-900 dark:text-zinc-50 flex flex-col relative selection:bg-blue-500/30 overflow-hidden">
-      {/* Background ambient effect */}
-      <div className="absolute top-[-20%] right-[-10%] w-[800px] h-[800px] bg-gradient-to-bl from-blue-500/20 to-violet-500/20 blur-[120px] pointer-events-none rounded-full mix-blend-screen opacity-50 dark:opacity-30"></div>
 
       {/* Header */}
       <header className="flex items-center justify-between px-6 py-6 w-full max-w-7xl mx-auto z-10 relative">

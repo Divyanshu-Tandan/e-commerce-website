@@ -16,10 +16,21 @@ export async function GET(request) {
     }
     
     if (search) {
-      query.$or = [
-        { name: { $regex: search, $options: "i" } },
-        { description: { $regex: search, $options: "i" } }
-      ];
+      // Split search into words and remove trailing 's' to handle simple plurals (e.g. "phones" -> "phone")
+      const searchTerms = search.trim().toLowerCase().split(/\s+/).map(term => term.replace(/s$/, ''));
+      
+      if (searchTerms.length > 0) {
+        query.$and = searchTerms.map(term => {
+          const regex = new RegExp(term, 'i');
+          return {
+            $or: [
+              { name: regex },
+              { description: regex },
+              { category: regex }
+            ]
+          };
+        });
+      }
     }
 
     const products = await productModel.find(query).sort({ createdAt: -1 });
