@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Scene from "@/components/Scene";
 
 export default function Home() {
   const [user, setUser] = useState(null);
@@ -58,7 +59,7 @@ export default function Home() {
           <Link href="/products" className="text-sm font-medium text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-50 transition-colors duration-300 font-bold">
             Catalog
           </Link>
-          
+
           {loading ? (
             <div className="w-8 h-8 rounded-full bg-zinc-200 dark:bg-zinc-800 animate-pulse"></div>
           ) : user ? (
@@ -96,14 +97,14 @@ export default function Home() {
             </span>
             New Collection Dropped
           </div>
-          
+
           <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 leading-[1.1]">
-            Elevate your <br/>
+            Elevate your <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-violet-600 dark:from-blue-400 dark:to-violet-400">
               digital lifestyle.
             </span>
           </h1>
-          
+
           <p className="text-lg md:text-xl text-zinc-600 dark:text-zinc-400 mb-10 max-w-2xl leading-relaxed">
             Discover our curated collection of premium electronics, ergonomic furniture, and modern accessories designed to inspire your best work.
           </p>
@@ -111,7 +112,7 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row items-center gap-4">
             <Link href="/products" className="group flex items-center justify-center gap-2 h-14 px-8 w-full sm:w-auto rounded-full bg-zinc-900 dark:bg-zinc-100 text-zinc-50 dark:text-zinc-900 font-medium hover:bg-zinc-800 dark:hover:bg-zinc-200 transition-all duration-300 active:scale-95 shadow-lg shadow-blue-500/10 text-lg">
               Shop Collection
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="group-hover:translate-x-1.5 transition-transform duration-300"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="group-hover:translate-x-1.5 transition-transform duration-300"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
             </Link>
             {!user && (
               <Link href="/register" className="group flex items-center justify-center gap-2 h-14 px-8 w-full sm:w-auto rounded-full bg-white/50 dark:bg-black/50 backdrop-blur-sm border border-zinc-300 dark:border-zinc-700 text-zinc-900 dark:text-zinc-50 font-medium hover:bg-zinc-100 dark:hover:bg-zinc-800/50 transition-all duration-300 active:scale-95 text-lg">
@@ -119,6 +120,12 @@ export default function Home() {
               </Link>
             )}
           </div>
+
+        </div>
+
+        {/* 3D Model Container positioned to the right */}
+        <div className="absolute hidden lg:block top-1/3 -translate-y-72 right-0 w-full lg:w-[45%] h-[50vh] min-h-[300px] pointer-events-none lg:pointer-events-auto opacity-30 lg:opacity-100 -z-10 lg:z-10 flex items-center justify-center animate-fade-in-up" style={{ animationDelay: "300ms", animationFillMode: "both" }}>
+          <Scene />
         </div>
 
         {/* Trending Section */}
@@ -127,10 +134,10 @@ export default function Home() {
             <div className="flex items-center justify-between mb-8">
               <h2 className="text-2xl font-bold tracking-tight">Trending Now</h2>
               <Link href="/products" className="text-blue-600 dark:text-blue-400 font-medium hover:underline text-sm flex items-center gap-1">
-                View all <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+                View all <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6" /></svg>
               </Link>
             </div>
-            
+
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {trending.map((product) => (
                 <Link href={`/products/${product._id}`} key={product._id} className="group flex flex-col gap-3">
