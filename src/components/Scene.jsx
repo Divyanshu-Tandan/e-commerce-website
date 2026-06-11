@@ -33,6 +33,15 @@ const MODEL_CONFIGS = [
         minDistance: 10,
         maxDistance: 23,
     },
+    {
+        name: "PS5",
+        path: "/models/ps5.obj",
+        scale: 0.015,
+        position: [0, -3, 0],
+        rotation: [0, 0, 0],
+        minDistance: 10,
+        maxDistance: 23,
+    },
 ];
 
 function CanvasLoader() {
