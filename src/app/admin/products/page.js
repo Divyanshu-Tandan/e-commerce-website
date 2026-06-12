@@ -128,7 +128,7 @@ export default function AdminProducts() {
 
   const handleDeleteClick = async (id) => {
     if (!confirm("Are you sure you want to delete this product? This action cannot be undone.")) return;
-    
+
     try {
       const res = await fetch(`/api/products/${id}`, {
         method: "DELETE",

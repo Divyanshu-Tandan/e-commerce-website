@@ -5,6 +5,18 @@ import { OrbitControls, Html, useProgress } from "@react-three/drei";
 import Model from "./Model";
 import { useState, useEffect, Suspense } from "react";
 
+// Suppress the THREE.Clock deprecation warning caused by @react-three/fiber
+// until the library updates to use THREE.Timer internally.
+if (typeof console !== "undefined") {
+    const originalWarn = console.warn;
+    console.warn = (...args) => {
+        if (args[0] && typeof args[0] === "string" && args[0].includes("THREE.Clock: This module has been deprecated")) {
+            return;
+        }
+        originalWarn(...args);
+    };
+}
+
 const MODEL_CONFIGS = [
     {
         name: "car",

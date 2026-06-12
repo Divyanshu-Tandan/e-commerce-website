@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import connectDB from "@/lib/db.js";
 import productModel from "@/models/product.model.js";
 import userModel from "@/models/user.model.js";
+import { verifyAccessToken } from "@/lib/auth.js";
 
 export async function GET(request) {
   try {
@@ -44,8 +45,6 @@ export async function GET(request) {
     );
   }
 }
-
-import { verifyAccessToken } from "@/lib/auth.js";
 
 export async function POST(request) {
   try {

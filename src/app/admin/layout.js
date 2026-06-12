@@ -1,13 +1,14 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import Link from "next/link";
 
 export default function AdminLayout({ children }) {
   const [isAdmin, setIsAdmin] = useState(false);
   const [loading, setLoading] = useState(true);
   const router = useRouter();
+  const pathname = usePathname();
 
   useEffect(() => {
     const checkAdmin = async () => {
@@ -54,10 +55,10 @@ export default function AdminLayout({ children }) {
           </Link>
         </div>
         <nav className="flex-1 overflow-y-auto py-4 px-3 space-y-1">
-          <Link href="/admin" className="flex items-center px-3 py-2 rounded-md bg-zinc-100 dark:bg-zinc-800 text-sm font-medium">
+          <Link href="/admin" className={`flex items-center px-3 py-2 rounded-md text-sm font-medium transition-colors ${pathname === "/admin" ? "bg-zinc-100 dark:bg-zinc-800 text-blue-600 dark:text-blue-400" : "hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-900 dark:text-zinc-50"}`}>
             Dashboard
           </Link>
-          <Link href="/admin/products" className="flex items-center px-3 py-2 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-800 text-sm font-medium transition-colors">
+          <Link href="/admin/products" className={`flex items-center px-3 py-2 rounded-md text-sm font-medium transition-colors ${pathname === "/admin/products" ? "bg-zinc-100 dark:bg-zinc-800 text-blue-600 dark:text-blue-400" : "hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-900 dark:text-zinc-50"}`}>
             Products
           </Link>
           <Link href="/" className="flex items-center px-3 py-2 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-800 text-sm font-medium text-zinc-500 transition-colors mt-4">
